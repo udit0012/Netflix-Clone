@@ -1,38 +1,45 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@400;700;800;900&display=swap');
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@layer components{
+  .btn{
+    @apply flex justify-between items-center border-0 bg-transparent py-2 px-4 cursor-pointer font-semibold rounded-md
   }
-  to {
-    transform: rotate(360deg);
+  .btn-red{
+    @apply bg-red-600 hover:bg-red-700 duration-100
+  }
+  .overlay{
+    @apply w-full h-full absolute top-0;
+    background-image: linear-gradient(to top, rgba(0,0,0,0.8) 0,rgba(0,0,0,0.5) 60%,rgba(0,0,0,0.8) 100%);
+  }
+  .font-martel{
+    font-family: 'Martel Sans', sans-serif;
+  }
+  .inputForm{
+    @apply bg-[rgba(0,0,0,0.7)] p-2 text-lg border border-gray-500 rounded-md
   }
 }
