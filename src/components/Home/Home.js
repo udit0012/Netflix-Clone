@@ -1,8 +1,8 @@
 import React from 'react'
-import Navbar from './Navbar'
-import bgImg from "../Images/home-bg.jpg"
-import downloadImg from "../Images/DownloadImg.png"
-import kidsImg from "../Images/kidsProfileImg.png"
+import Navbar from '../Navbar'
+import bgImg from "../../Images/home-bg.jpg"
+import downloadImg from "../../Images/DownloadImg.png"
+import kidsImg from "../../Images/kidsProfileImg.png"
 import { BiErrorCircle } from "react-icons/bi"
 import { AiOutlineRight } from "react-icons/ai"
 import { useForm } from 'react-hook-form'

@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from "../Images/Netflix-logo.png"
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     return (
@@ -8,7 +9,7 @@ const Navbar = () => {
                 <img className='h-auto w-44' src={logo} alt='Netflix' priority />
             </div>
             <div className='flex mx-10'>
-                <button className='btn btn-red'>Sign in</button>
+                <Link to={"/login"} className='btn btn-red'>Sign in</Link>
             </div>
         </div>
     )
