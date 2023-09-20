@@ -30,21 +30,21 @@ const AccordianBox = () => {
     return (
         <div className='flex flex-col w-full justify-center items-center xl:w-2/3'>
             {accodianData.map((data) => {
-                return <div className='w-full text-white my-2'>
-                    <div class="hs-accordion-group">
-                        <div class="hs-accordion" id="hs-basic-with-title-and-arrow-stretched-heading-one">
-                            <button class="hs-accordion-toggle bg-neutral-800 text-xl md:text-2xl p-6 group inline-flex items-center justify-between gap-x-3 w-full text-left transition hover:bg-neutral-600 " aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one">
+                return <div key={data.ques} className='w-full text-white my-2'>
+                    <div className="hs-accordion-group">
+                        <div className="hs-accordion" id="hs-basic-with-title-and-arrow-stretched-heading-one">
+                            <button className="hs-accordion-toggle bg-neutral-800 text-xl md:text-2xl p-6 group inline-flex items-center justify-between gap-x-3 w-full text-left transition hover:bg-neutral-600 " aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one">
                                 {data.ques}
-                                <AiOutlinePlus class="duration-100 text-xl lg:text-4xl hs-accordion-active:rotate-45" />
+                                <AiOutlinePlus className="duration-100 text-xl lg:text-4xl hs-accordion-active:rotate-45" />
                                     
-                                {/* <AI class="hs-accordion-active:block   hidden"> */}
+                                {/* <AI className="hs-accordion-active:block   hidden"> */}
                                 
                             </button>
-                            <div id="hs-basic-with-title-and-arrow-stretched-collapse-one" class="hs-accordion-content bg-neutral-800 text-xl md:text-2xl p-6 hidden mt-1 w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one">
-                                <p class="text-gray-800 dark:text-gray-200">
+                            <div id="hs-basic-with-title-and-arrow-stretched-collapse-one" className="hs-accordion-content bg-neutral-800 text-xl md:text-2xl p-6 hidden mt-1 w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one">
+                                <p className="text-gray-800 dark:text-gray-200">
                                     {data.ans1}
                                 </p>
-                                {data.ans2 && <p class="text-gray-800 dark:text-gray-200 mt-10">
+                                {data.ans2 && <p className="text-gray-800 dark:text-gray-200 mt-10">
                                     {data.ans2}
                                 </p>}
                             </div>

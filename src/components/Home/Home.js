@@ -5,25 +5,33 @@ import downloadImg from "../../Images/DownloadImg.png"
 import kidsImg from "../../Images/kidsProfileImg.png"
 import { BiErrorCircle } from "react-icons/bi"
 import { AiOutlineRight } from "react-icons/ai"
-import { useForm } from 'react-hook-form'
 import AccordianBox from './AccordianBox'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Home = () => {
-
+    const navigate = useNavigate()
     const [email, setEmail] = React.useState("")
-    const handleEmail = (data) => {
-        console.log(data);
+    const [errors, setErrors] = React.useState({email:null})
+    const handleEmailChange = (e)=>{
+        setEmail(e.target.value)
+        setErrors({...errors,email:null})
+    }
+    const handleEmail = (e) => {
+        e.preventDefault()
+        if(email.length && /\S+@\S+\.\S+/.test(email)){
+
+            console.log(email);
+            navigate("/signup/registration")
+        }else {
+            setErrors({...errors,email:"Please enter a valid email"})
+        }
 
     }
-
-    const { register, handleSubmit, formState: { errors } } = useForm()
-    console.log("error", errors);
     return (
-        <>
-            <div className="relative">
+        <div className='bg-black'>
+            <div className="relative z-10">
                 <Navbar />
-                <div className="absolute w-full top-0 -z-10 h-full overflow-hidden">
+                <div className="absolute w-full top-0 h-full z-[-1] overflow-hidden">
                     <img className="w-full scale-125 translate-y[-10%] h-full object-cover" src={bgImg} alt={"home-bg"} />
                     <div className="overlay"></div>
                 </div>
@@ -32,20 +40,17 @@ const Home = () => {
                         <div className="text-3xl md:text-4xl lg:text-5xl font-[900] my-3 lg:my-6 mx-2">Laughter. Tears. Thrills. Find it all on Netflix.</div>
                         <div className="my-2 md:my-4 lg:my-6 text-lg md:text-xl lg:text-2xl text-center">Endless entertainment starts at just ₹ 149. Cancel anytime.</div>
                         <div className="my-2 md:my-4 lg:my-6 text-lg md:text-xl lg:text-2xl text-center">Ready to watch? Enter your email to create or restart your membership.</div>
-                        <form onSubmit={handleSubmit(handleEmail)} className="flex flex-col md:flex-row justify-center items-center gap-2 py-4">
+                        <form id='form1' onSubmit={handleEmail} className="flex flex-col md:flex-row justify-center items-center gap-2 py-4">
                             <div className="relative w-10/12 md:w-1/2">
 
-                                <input {...register("email", {
-                                    required: true,
-                                    pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-                                })} type="email" id={"email"} className={`block rounded-md px-6 pb-2 pt-5 w-full text-sm lg:text-lg text-neutral-200 bg-gray-5 border border-gray-700 bg-[rgba(0,0,0,0.6)] appearance-none focus:outline-2 focus:ring-0 ${errors.email && "border-red-500"} peer`} placeholder=" " />
-                                <label htmlFor={"email"} className="absolute text-sm lg:text-lg text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">{"Email address"}</label>
-                                {errors.email && <p className='text-sm py-2 items-center flex text-red-500'><span className="px-2">
+                                <input value={email} onChange={handleEmailChange} type="email" id={"email1"} className={`block rounded-md px-6 pb-2 pt-5 w-full text-sm lg:text-lg text-neutral-200 bg-gray-5 border border-gray-700 bg-[rgba(0,0,0,0.6)] appearance-none focus:outline-2 focus:ring-0 ${errors.email && "border-red-500"} peer`} placeholder=" " />
+                                <label htmlFor={"email1"} className="absolute text-sm lg:text-lg text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">{"Email address"}</label>
+                                {errors.email && <p className='text-sm absolute py-2 items-center flex text-red-500'><span className="px-2">
                                     <BiErrorCircle />
                                 </span> Please enter a valid email address</p>}
 
                             </div>
-                            <div><button className="btn btn-red text-lg md:text-xl lg:text-2xl px-5"><span className="pt-1 lg:pt-2">Get Started</span> <span className="px-1">
+                            <div><button type='submit' id='submitBtn1' className="btn btn-red text-lg md:text-xl lg:text-2xl px-5"><span className="pt-1 lg:pt-2">Get Started</span> <span className="px-1">
                                 <AiOutlineRight />
                             </span> </button></div>
                         </form>
@@ -82,20 +87,17 @@ const Home = () => {
                 <AccordianBox />
                 <div className='pt-10 md:pt-16 xl:pt-20'>
                     <div className='text-lg md:text-xl xl:text-2xl pb-2 text-center'>Ready to watch? Enter your email to create or restart your membership.</div>
-                    <form onSubmit={handleSubmit(handleEmail)} className="flex flex-col md:flex-row justify-center items-center gap-2 py-4">
+                    <form id='form2' onSubmit={handleEmail} className="flex flex-col md:flex-row justify-center items-center gap-2 py-4">
                         <div className="relative w-10/12 md:w-2/3">
 
-                            <input {...register("email", {
-                                required: true,
-                                pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-                            })} type="email" id={"email"} className={`block rounded-md px-6 pb-2 pt-5 w-full text-sm lg:text-lg text-neutral-200 bg-gray-5 border border-gray-700 bg-[rgba(0,0,0,0.6)] appearance-none focus:outline-2 focus:ring-0 ${errors.email && "border-red-500"} peer`} placeholder=" " />
-                            <label htmlFor={"email"} className="absolute text-sm lg:text-lg text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">{"Email address"}</label>
-                            {errors.email && <p className='text-sm py-2 items-center flex text-red-500'><span className="px-2">
+                            <input value={email} onChange={handleEmailChange} type="email" id={"email2"} className={`block rounded-md px-6 pb-2 pt-5 w-full text-sm lg:text-lg text-neutral-200 bg-gray-5 border border-gray-700 bg-[rgba(0,0,0,0.6)] appearance-none focus:outline-2 focus:ring-0 ${errors.email && "border-red-500"} peer`} placeholder=" " />
+                            <label htmlFor={"email2"} className="absolute text-sm lg:text-lg text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">{"Email address"}</label>
+                            {errors.email && <p className='text-sm absolute py-2 items-center flex text-red-500'><span className="px-2">
                                 <BiErrorCircle />
                             </span> Please enter a valid email address</p>}
 
                         </div>
-                        <div><button className="btn btn-red text-lg md:text-xl lg:text-2xl px-5"><span className="pt-1 lg:pt-2">Get Started</span> <span className="px-1">
+                        <div><button type='submit' id='submitBtn2' className="btn btn-red text-lg md:text-xl lg:text-2xl px-5"><span className="pt-1 lg:pt-2">Get Started</span> <span className="px-1">
                             <AiOutlineRight />
                         </span> </button></div>
                     </form>
@@ -127,7 +129,7 @@ const Home = () => {
                     <div className='py-6 text-sm'>Netflix India</div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

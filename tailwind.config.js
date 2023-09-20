@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       padding:{
         88:"22rem"
+      },
+      screens:{
+        xs:"568px"
       }
     },
   },

@@ -18,19 +18,13 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 @layer components{
   .btn{
     @apply flex justify-between items-center border-0 bg-transparent py-2 px-4 cursor-pointer font-semibold rounded-md
   }
   .btn-red{
-    @apply bg-red-600 hover:bg-red-700 duration-100
+    @apply bg-red-600 hover:bg-gradient-to-b hover:from-red-500 hover:to-red-600
   }
   .overlay{
     @apply w-full h-full absolute top-0;
@@ -41,5 +35,17 @@ body {
   }
   .inputForm{
     @apply bg-[rgba(0,0,0,0.7)] p-2 text-lg border border-gray-500 rounded-md
+  }
+}
+
+.laodingAnimation{
+  animation : animateLeft .3s ease;
+}
+@keyframes animateLeft {
+  0%{
+    left: 100px;
+  }
+  100%{
+    left: 0px;
   }
 }
