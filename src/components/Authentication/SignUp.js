@@ -1,26 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import logo from "../../Images/Netflix-logo.png"
 import { Link, useLocation } from 'react-router-dom'
 import Registration from './Registration'
 import RegForm from './RegForm'
+import Step2 from './Step2'
+import PlanForm from './PlanForm'
+
+const views = {
+    "/signup/registration":Registration,
+    "/signup":Step2,
+    "/signup/regForm":RegForm,
+    "/signup/planForm":PlanForm,
+}
 
 const SignUp = () => {
     const location = useLocation()
+    const CurrentView = views[location.pathname];
     return (
         <div className='overflow-x-hidden'>
             {/* NAVBAR */}
-            <div className='flex justify-between items-center px-10 border-b-[1px] border-neutral-400 py-6'>
+            <div className='flex justify-between items-center px-5 lg:px-10 border-b-[1px] border-neutral-400 py-4 lg:py-6'>
                 <div className="">
-                    <img className='h-auto w-44' src={logo} alt='Netflix' />
+                    <img className='h-auto w-28 md:w-44' src={logo} alt='Netflix' />
                 </div>
                 <div className='flex mx-10'>
-                    <Link to={"/login"} className='text-neutral-700 font-semibold text-xl'>Sign in</Link>
+                    <Link to={"/login"} className='text-neutral-700 font-semibold text-lg md:text-xl'>Sign in</Link>
                 </div>
             </div>
 
             {/* BODY  */}
-            {location.pathname==="/signup/registration"?<Registration />:<RegForm />}
-            
+            {/* {location.pathname==="/signup"?<Step2 /> : location.pathname==="/signup/registration"?<Registration />:<RegForm />} */}
+            <CurrentView />
             {/* FOOTER  */}
             <div className="flex md:fixed bottom-0 w-full bg-black bg-opacity-10 justify-center items-center">
                 <div className='p-6 py-10 text-neutral-600 w-full lg:w-4/5 xl:2/3'>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from '../Navbar'
 import bgImg from "../../Images/home-bg.jpg"
 import downloadImg from "../../Images/DownloadImg.png"
@@ -7,10 +7,11 @@ import { BiErrorCircle } from "react-icons/bi"
 import { AiOutlineRight } from "react-icons/ai"
 import AccordianBox from './AccordianBox'
 import { Link, useNavigate } from 'react-router-dom'
+import NoteContext from '../../context/NoteContext'
 
 const Home = () => {
     const navigate = useNavigate()
-    const [email, setEmail] = React.useState("")
+    const {email,setEmail} = useContext(NoteContext)
     const [errors, setErrors] = React.useState({email:null})
     const handleEmailChange = (e)=>{
         setEmail(e.target.value)

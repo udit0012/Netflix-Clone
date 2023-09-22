@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Registration = () => {
   return (
     <div className='flex relative laodingAnimation justify-center items-center text-black'>
-                <div className='my-32 flex w-1/3 flex-col justify-center items-center'>
+                <div className='my-32 flex w-[440px] flex-col justify-center items-center'>
                     <div className='flex justify-center'>
                         <img src={displays} className='w-1/2' alt="" />
                     </div>
