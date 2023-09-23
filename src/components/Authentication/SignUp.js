@@ -1,16 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import logo from "../../Images/Netflix-logo.png"
 import { Link, useLocation } from 'react-router-dom'
 import Registration from './Registration'
 import RegForm from './RegForm'
-import Step2 from './Step2'
-import PlanForm from './PlanForm'
 
 const views = {
     "/signup/registration":Registration,
-    "/signup":Step2,
     "/signup/regForm":RegForm,
-    "/signup/planForm":PlanForm,
 }
 
 const SignUp = () => {

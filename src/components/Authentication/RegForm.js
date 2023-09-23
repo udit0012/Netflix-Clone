@@ -22,7 +22,7 @@ const RegForm = () => {
                     {/* <div className='flex justify-center'>
                         <img src={displays} className='w-1/2' alt="" />
                     </div> */}
-                    <div className='my-4 uppercase text-sm'>Step <span className='mx-1 font-bold text-neutral-600'>1</span> of <span className='mx-1 font-bold text-neutral-600'>3</span></div>
+                    <div className='my-4 uppercase text-sm'>Step <span className='mx-1 font-bold text-neutral-600'>2</span> of <span className='mx-1 font-bold text-neutral-600'>2</span></div>
                     <div className='text-4xl text-neutral-700 font-bold'>Create a password to start your membership</div>
                     <div className='text-lg mt-3 text-neutral-700'>Just a few more steps and you're done! </div>
                     <div className='text-lg mb-3 text-neutral-700'>We hate paperwork, too.
