@@ -10,6 +10,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import NoteContext from '../../context/NoteContext'
 
 const Home = () => {
+    const {backendURL,setUserExists} = useContext(NoteContext)
     const navigate = useNavigate()
     const {email,setEmail} = useContext(NoteContext)
     const [errors, setErrors] = React.useState({email:null})
@@ -17,12 +18,25 @@ const Home = () => {
         setEmail(e.target.value)
         setErrors({...errors,email:null})
     }
-    const handleEmail = (e) => {
+    const handleEmail = async(e) => {
         e.preventDefault()
         if(email.length && /\S+@\S+\.\S+/.test(email)){
-
-            console.log(email);
-            navigate("/signup/registration")
+            const res = await fetch(`${backendURL}/apiAuth/checkEmail`,{
+                method:"POST",
+                headers:{
+                    "Content-type":"application/json"
+                },
+                body:JSON.stringify({email})
+            })
+            const data = await res.json();
+            if(data.msg==="Success"){
+                setUserExists(data.data?.userExists)
+                if(data.data?.userExists){
+                    navigate("/signup/password")
+                }else{
+                    navigate("/signup/registration")
+                }
+            }
         }else {
             setErrors({...errors,email:"Please enter a valid email"})
         }

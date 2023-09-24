@@ -13,10 +13,10 @@ export const emailChecker = async(req,res)=>{
         if(user){
             return res.status(200).json({msg:"Success",data:{userExists:true,error:null}});
         }
-        return res.status(200).json({msg:"Success",data:{userExists:false,error:null}});
+        return res.status(200).json({msg:"Success",data:{userExists:false},error:null});
     } catch (error) {
         console.log(error);
-        return res.status(500).json({msg:"Failed",data:null,error:"Internal server error"})
+        return res.status(500).json({msg:"Failed",data:null,error:{serverError:true}})
     }
 }
 export const login = async(req,res)=>{

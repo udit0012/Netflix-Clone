@@ -3,10 +3,12 @@ import logo from "../../Images/Netflix-logo.png"
 import { Link, useLocation } from 'react-router-dom'
 import Registration from './Registration'
 import RegForm from './RegForm'
+import LoginForm from './LoginForm'
 
 const views = {
     "/signup/registration":Registration,
     "/signup/regForm":RegForm,
+    "/signup/password":LoginForm,
 }
 
 const SignUp = () => {
