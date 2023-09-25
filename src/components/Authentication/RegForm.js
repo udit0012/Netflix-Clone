@@ -2,17 +2,35 @@ import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { BiErrorCircle } from 'react-icons/bi'
 import NoteContext from '../../context/NoteContext'
+import { useNavigate } from 'react-router-dom'
 
 const RegForm = () => {
-    const {email} = useContext(NoteContext)
+    const navigate = useNavigate()
+    const {email,backendURL} = useContext(NoteContext)
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues:{
             email:email,
             password:""
         }
     })
-    const handleRegister = (data) => {
-        console.log("data", data);
+    const handleRegister = async(formData) => {
+        try {
+            const  res = await fetch(`${backendURL}/apiAuth/register`,{
+              method:"POST",
+              headers:{
+                "Content-type":"application/json",
+              },
+              body:JSON.stringify({email,password:formData.password})
+            })
+            const data = await res.json();
+            if(data.msg==="Success"){
+              localStorage.setItem("netflix-authToken",data.data?.authToken)
+              navigate("/movies")
+            }
+            console.log(data);
+          } catch (error) {
+            console.log(error);
+          }
     }
     console.log(errors);
     return (

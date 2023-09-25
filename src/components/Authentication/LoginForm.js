@@ -30,7 +30,7 @@ const LoginForm = () => {
                     <div className="relative w-full my-2">
                         <input {...register("password", {
                             required: {value:true,message:"Password is required"},
-                        })} type="password" id={"password"} className={`block rounded px-4 pb-2 pt-4 w-full text-[16px] text-black bg-transparent border-[1px] appearance-none focus:outline-2 focus:ring-0 ${errors.password? "border-red-500":"border-neutral-600"} peer`} placeholder=" " />
+                        })} type="password" id={"password"} className={`block rounded px-4 pb-2 pt-4 w-full text-[16px] text-black bg-transparent border-[1px] appearance-none focus:outline-2 focus:ring-0 ${errors.password? "outline-none border-red-500":"border-neutral-600"} peer`} placeholder=" " />
                         <label htmlFor={"password"} className="absolute text-[16px] text-neutral-700  duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">{"Enter your password"}</label>
                         {errors.password?.type && <p className='text-sm py-1 items-center flex text-red-500'><span className="px-2">
                             <BiErrorCircle />
