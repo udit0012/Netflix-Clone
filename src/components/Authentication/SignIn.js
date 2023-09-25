@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import logo from "../../Images/Netflix-logo.png"
 import bgImg from "../../Images/home-bg.jpg"
 import { BiErrorCircle } from 'react-icons/bi'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+import NoteContext from '../../context/NoteContext'
 
 const SignIn = () => {
+    const {handleLogin} = useContext(NoteContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [checked, setChecked] = React.useState(true)
     const handleCheck = (e) => {
         setChecked(!checked)
     }
-    const handleLogin = (data) => {
-        console.log("data", data);
-        console.log("check", checked);
-    }
+    // const handleLogin = (data) => {
+    //     console.log("data", data);
+    //     console.log("check", checked);
+    // }
     return (
         <div className='w-full bg-black h-[100vh]'>
             <div className='relative h-full z-10'>
@@ -33,9 +35,9 @@ const SignIn = () => {
                                 <input {...register("email", {
                                     required: true,
                                     pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-                                })} type="email" id={"email"} className={`block rounded px-4 pb-2 pt-4 w-full text-[16px] text-neutral-200 bg-neutral-700 bg-[rgba(0,0,0,0.6)] appearance-none focus:outline-2 focus:ring-0 ${errors.email && "border-red-500"} peer`} placeholder=" " />
+                                })} type="email" id={"email"} className={`block rounded px-4 pb-2 pt-4 w-full text-[16px] text-neutral-200 bg-neutral-700 bg-[rgba(0,0,0,0.6)] appearance-none focus:outline-2 focus:ring-0 ${errors.email && "outline-none border-b-2 border-yellow-500"} peer`} placeholder=" " />
                                 <label htmlFor={"email"} className="absolute text-[16px] text-neutral-400  duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">{"Email or phone number"}</label>
-                                {errors.email && <p className='text-sm py-2 items-center flex text-red-500'><span className="px-2">
+                                {errors.email && <p className='text-sm py-2 items-center flex text-yellow-500'><span className="px-2">
                                     <BiErrorCircle />
                                 </span> Please enter a valid email address</p>}
                             </div>
@@ -43,11 +45,11 @@ const SignIn = () => {
                                 <input {...register("password", {
                                     required: true,
                                     // pattern: /^[a-zA-Z0-9._%+-]+@[a-A-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-                                })} type="password" id={"password"} className={`block rounded px-4 pb-2 pt-4 w-full text-[16px] text-neutral-200 bg-neutral-700 bg-[rgba(0,0,0,0.6)] appearance-none focus:outline-2 focus:ring-0 ${errors.email && "border-red-500"} peer`} placeholder=" " />
+                                })} type="password" id={"password"} className={`block rounded px-4 pb-2 pt-4 w-full text-[16px] text-neutral-200 bg-neutral-700 bg-[rgba(0,0,0,0.6)] appearance-none focus:outline-2 focus:ring-0 ${errors.password && "outline-none border-b-2 border-yellow-500"} peer`} placeholder=" " />
                                 <label htmlFor={"password"} className="absolute text-[16px] text-neutral-400  duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">{"Password"}</label>
-                                {errors.email && <p className='text-sm py-2 items-center flex text-red-500'><span className="px-2">
+                                {errors.email && <p className='text-sm py-2 items-center flex text-yellow-500'><span className="px-2">
                                     <BiErrorCircle />
-                                </span> Please enter a valid email address</p>}
+                                </span> Password is required</p>}
                             </div>
                             <div className='relative my-8 w-full'>
                                 <button type='submit' className='btn btn-red w-full flex justify-center items-center rounded py-3 font-semibold'>Sign In</button>

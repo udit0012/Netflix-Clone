@@ -4,21 +4,16 @@ import { BiErrorCircle } from 'react-icons/bi'
 import NoteContext from '../../context/NoteContext'
 
 const LoginForm = () => {
-    const {email} = useContext(NoteContext)
+    const {email,handleLogin} = useContext(NoteContext)
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues:{
-            email:email,
             password:""
         }
     })
-    const handleRegister = (data) => {
-        console.log("data", data);
-    }
-    console.log(errors);
     return (
         <div className='relative laodingAnimation flex justify-center items-center text-black'>
             <div className="w-[440px] mx-10">
-                <form className='my-10' onSubmit={handleSubmit(handleRegister)}>
+                <form className='my-10' onSubmit={handleSubmit(handleLogin)}>
                     {/* <div className='flex justify-center'>
                         <img src={displays} className='w-1/2' alt="" />
                     </div> */}
